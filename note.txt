@@ -1,0 +1,12 @@
+#Database-update : after editing fields in models
+
+1. python manage.py makemigrations
+to commit changes in the database
+
+2. Choose "Provide a one-off default now"
+
+3. type: '' 
+to set NULL to new changes
+
+4. python manage.py migrate
+to update database for the engine
