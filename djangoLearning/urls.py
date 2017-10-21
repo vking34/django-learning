@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^file-uploader/', include('file_uploader.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^pagination/', include('pagination.urls')),
+    url(r'^login/', include('login.urls'), name='login'),
 ]

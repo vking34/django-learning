@@ -14,6 +14,4 @@ def index(request):
     t = Template(fp.read())
     fp.close()
     html = t.render(Context())
-
-
     return HttpResponse(html)

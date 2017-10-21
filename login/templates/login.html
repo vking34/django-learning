@@ -1,0 +1,21 @@
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" name="username" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Login"/></td>
+        </tr>
+    </table>
+    {% if waring %}
+        </br>
+        <span style="color: red">Wrong username or password</span>
+    {% endif %}
+</form>

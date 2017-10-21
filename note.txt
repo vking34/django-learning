@@ -10,3 +10,7 @@ to set NULL to new changes
 
 4. python manage.py migrate
 to update database for the engine
+
+#Class-Meta : The Meta class of a Subclass only inherit the Meta of the first parent-class.
+
+
