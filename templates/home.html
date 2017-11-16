@@ -1,0 +1,131 @@
+{#{% load static %}<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Home</title>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>#}
+{#</head>#}
+{#<body>#}
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block top %}
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}">VKing34</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{ user.username }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+{% endblock top %}
+
+{% block pre %}
+
+<h1>
+Welcome to my website !
+</h1>
+<p>This is website created by VKing34</p>
+</br>
+<a href="{% url 'signup' %}">Sign up</a>
+</br>
+</br>
+<a href="{% url 'polls:index' %}">Click here</a><a> to get some polls.</a>
+</br>
+</br>
+<a href="{% url 'fuloader:fileUploader' %}">Upload Files</a>
+</br>
+</br>
+<a href="{% url 'pagination:list' %}">Paginatio</a>
+</br>
+</br>
+<a href="{% url 'login:login' %}">Log in</a>
+    </br>
+    </br>
+
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Boards</li>
+{% endblock %}
+
+
+{#{% if boards %}#}
+{##}
+{#    {% for board in boards %}#}
+{#        <a href="{% url 'boards:detail' board.id %}">{{ board.name }}</a>#}
+{#        </br>#}
+{#        <small style="color: #888">{{ board.description }}</small>#}
+{#        </br>#}
+{##}
+{#        </br>#}
+{#    {% endfor %}#}
+{#{% else %}#}
+{#    <p>There's no board !!!</p>#}
+{#{% endif %}#}
+{##}
+{#    <table border="1">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th>Board</th>#}
+{#          <th>Posts</th>#}
+{#          <th>Topics</th>#}
+{#          <th>Last Post</th>#}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#        {% for board in boards %}#}
+{#          <tr>#}
+{#            <td>#}
+{#              {{ board.name }}<br>#}
+{#              <small style="color: #888">{{ board.description }}</small>#}
+{#            </td>#}
+{#            <td>0</td>#}
+{#            <td>0</td>#}
+{#            <td></td>#}
+{#          </tr>#}
+{#        {% endfor %}#}
+{#      </tbody>#}
+{#    </table>#}
+
+{#    <div class="container">#}
+{#      <ol class="breadcrumb my-4">#}
+{#        <li class="breadcrumb-item active">Boards</li>#}
+{#      </ol>#}
+
+{% block boards_content %}
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Board</th>
+            <th>Posts</th>
+            <th>Topics</th>
+            <th>Last Post</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for board in boards %}
+            <tr>
+              <td>
+                <a href="{% url 'boards:board_topics' board.pk %}">{{ board.name }}</a>
+                <small class="text-muted d-block">{{ board.description }}</small>
+              </td>
+              <td class="align-middle">0</td>
+              <td class="align-middle">0</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

@@ -5,41 +5,35 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from .models import Question, Choice
 
+
+def index(request):
+    try:
+        questions = Question.objects.all()
+    except Question.DoesNotExist:
+        raise Http404("There's no question !!!")
+
+    return render(request, 'index.html', {'latest_question_list': questions})
+
+
+# class indexView(generic.ListView):
+#     template_name = 'polls/index.html'
+#     context_object_name = 'latest_question_list'
 #
-# def index(request):
-#     response = HttpResponse()
-#     response.write("<h1>Welcome</h1>")
-#     response.write("<p>This is the polls app created by VKing34</p>")
-#     response.write("<p>Choose one question:</p>")
-#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-#     template = loader.get_template('polls/index.html')
-#     context = {
-#         'latest_question_list': latest_question_list,
-#     }
-#     response.write(template.render(context, request))
-#
-#     return response
-#     # return render(request, 'polls/index.html', context)
+#     def get_queryset(self):
+#         return Question.objects.order_by('-pub_date')[:5]
 
-class indexView(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
+def detail(request, pk):
+    try:
+        question = Question.objects.get(pk=pk)
+    except Question.DoesNotExist:
+        raise Http404("Question does not exist")
 
-    def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
 
-# def detail(request, question_id):
-#     try:
-#         question = Question.objects.get(pk=question_id)
-#     except Question.DoesNotExist:
-#         raise Http404("Question does not exist")
-#
-#     # return HttpResponse("You're looking at question %s." % question_id)
-#     return render(request, 'polls/detail.html', {'question': question})
+    return render(request, 'detailPolls.html', {'question': question})
 
-class detailView(generic.DetailView):
-    model = Question
-    template_name = 'polls/detail.html'
+# class detailView(generic.DetailView):
+#     model = Question
+#     template_name = 'polls/detail.html'
 
 
 def results(request, question_id):
@@ -48,7 +42,7 @@ def results(request, question_id):
 
     question = get_object_or_404(Question, pk=question_id)
 
-    return render(request, 'polls/results.html', {'question': question})
+    return render(request, 'resultsPolls.html', {'question': question})
 
 # class resultsView(generic.DetailView):
 #     model = Question
@@ -64,7 +58,7 @@ def vote(request, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
 
     except (KeyError, Choice.DoesNotExist):
-        return render(request, 'polls/detail.html', {
+        return render(request, 'detailPolls.html', {
             'question': question,
             'error_message': "You didn't select a choice.",
         })

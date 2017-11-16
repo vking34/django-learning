@@ -5,6 +5,14 @@
 {#    {% endfor %}#}
 {#</ul>#}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question {{ question.id }}</title>
+</head>
+<body>
+
 <h1>{{ question.question_text }}</h1>
 
 {% if error_message %}
@@ -22,3 +30,6 @@
     {% endfor %}
     <input type="submit" value="Vote" />
 </form>
+
+</body>
+</html>

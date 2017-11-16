@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from accounts.views import signup
 from . import views
+
+# app_name = "home", for urls of the main,
+# the app_name dont need to created
+# cause Django engine consider from here to sub-urls.
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^register/', include('user_auth.urls')),
-    url(r'^polls/', include('polls.urls')),
-    url(r'^file-uploader/', include('file_uploader.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^pagination/', include('pagination.urls')),
+    url(r'^signup/', signup, name='signup'),
+    url(r'^register/', include('user_auth.urls'), name='register'),
+    url(r'^polls/', include('polls.urls'), name='polls'),
+    url(r'^file-uploader/', include('file_uploader.urls'), name='file-uploader'),
+    url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^pagination/', include('pagination.urls'), name='pagination'),
     url(r'^login/', include('login.urls'), name='login'),
+    url(r'^boards/', include('boards.urls'), name='boards'),
 ]
