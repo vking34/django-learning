@@ -5,5 +5,5 @@ from . import views
 app_name='accounts'
 
 urlpatterns = [
-    url(r'^$', views.signup, name='signup'),
+    url(r'^settings/account/', views.UserUpdateView.as_view(), name='my_account'),
 ]

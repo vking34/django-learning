@@ -9,7 +9,14 @@
     <li class="breadcrumb-item active">New topic</li>
 {% endblock %}
 
-{% block boards_content %}
+{% block body %}
+    <div class="container">
+    <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item"><a href="{% url 'boards:index' %}">Boards</a> </li>
+        <li class="breadcrumb-item "><a href="{% url 'boards:board_topics' board.pk %}">{{ board.name }}</a></li>
+        <li class="breadcrumb-item active">New topic</li>
+    </ol>
+
     <form method="post" novalidate>
         {% csrf_token %}
 {#        <div class="form-group">#}
@@ -57,5 +64,5 @@
 
         <button type="submit" class="btn btn-success">Post</button>
     </form>
-
+    </div>
 {% endblock %}

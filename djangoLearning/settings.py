@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'boards.templatetags.gravatar',
     'widget_tweaks',
 ]
 # Functions set
@@ -141,3 +143,11 @@ CACHES = {
     'LOCATION': '127.0.0.1:11211',
     }
 }
+
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

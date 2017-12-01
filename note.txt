@@ -13,4 +13,17 @@ to update database for the engine
 
 #Class-Meta : The Meta class of a Subclass only inherit the Meta of the first parent-class.
 
+#Migration
+1. python manage.py makemigrations
+to generate modified database file (migration file)
+2. python manage.py migrate
+to grab all migration files and generate the database chema
 
+#login required
+
+@login_required
+def funcView(request):
+
+is right before a function view to requeired login to countinue.
+
+#
