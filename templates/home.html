@@ -1,8 +1,11 @@
-
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Home{% endblock %}
 {% load humanize %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
 {#{% block top %}#}
 {##}
