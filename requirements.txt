@@ -50,7 +50,7 @@ icalendar==3.8
 idna==2.5
 iso8601==0.1.11
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 limits==1.2.1
 louis==3.3.0
 lxml==3.8.0
